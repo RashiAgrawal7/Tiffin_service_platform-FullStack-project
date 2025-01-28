@@ -1,0 +1,75 @@
+.billing-page{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.billing-page-item-fields p{
+    color: white;
+    font-size: 16 px;
+    margin-bottom: 15px;
+}
+
+.billing-page-left{
+    margin: 20px;
+    width: 700px;
+    padding: 20px;
+}
+
+.billing-page-left input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    padding-left: 15px;
+    font-family: 'Poppins';
+    font-size: 16px;
+}
+
+.name-fields{
+    display: flex;
+    gap: 10px;
+}
+
+.firstname{
+    width: 100%;
+}
+.lastname{
+    width: 100%;
+}
+
+.street-address {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.billing-page-right{
+    margin: 20px;
+    padding: 20px;
+    width: 600px;
+    border: 2px solid rgb(27, 16, 16);
+    box-shadow: 1px 1px 5px white;
+}
+
+.billing-page-right h3{
+    margin-bottom: 50px;
+}
+
+.billing-page-right button{
+    margin-top: 120px;
+    width: 550px;
+    height: 58px;
+    outline: none;
+    border: none;
+    background: #ff5a5a;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cartitems-total-items{
+    display: flex;
+    gap: 200px;
+}

@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  color: #fff;
+} */
+
+.navbar{
+  background: black;
+  box-shadow: 1px 1px 20px rgb(72,80,102);
+}
+
+
+nav {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 67px;
+  padding: 8px 0;
+  margin: 0px 60px;
+}
+
+.logo {
+  display: flex;
+  gap: 16px;
+  margin-left: 40px;
+}
+
+.logo img{
+  width: 32px;
+  height: 44px;
+}
+
+.logo h5{
+  margin-top: 7px;
+  color: white;
+  font-size: 30px;
+  font-style: italic;
+}
+
+.btn {
+  background: rgb(21, 136, 237);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 3px 32px;
+  font-size: 15px;
+  cursor: pointer;
+  /* margin-right: 10px; */
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 7px 10px;
+  color: #fff;
+  position: absolute;
+  left: 390px;
+  margin-top: 5px;
+}
+
+.location:hover{
+  box-shadow: 1px 1px 5px white;
+}
+
+.optionstyle{
+    color: #000;
+}
+
+.login-cart{
+  display: flex;
+  margin-right: 45px;
+  gap: 10px;
+}
+
+.navbar-profile{
+  position: relative;
+}
+
+.navbar-profile-dropdown{
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+}
+
+.nav-profile-icon{
+  width: 30px;
+}
+
+.nav-profile-bag-icon{
+  width: 20px;
+}
+
+.nav-profile-logout-icon{
+  width: 20px;
+}
+
+.navbar-profile:hover .navbar-profile-dropdown{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #413232;
+  padding: 12px 25px;
+  border-radius: 4px;
+  border: 1px solid tomato;
+  outline: 2px solid white;
+  list-style: none;
+}
+
+.navbar-profile-dropdown li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.navbar-profile-dropdown li:hover{
+  color: rgb(211, 102, 83);
+}
+
+.navbar-profile-dropdown li p{
+  margin: 0;
+}
+
+.navbar-profile-dropdown hr{
+  margin: 0;
+}
+
+.cart_icon{
+  width: 35px;
+  margin: 0px 20px;
+  margin-right: 10px;
+}
+.nav-cart-count{
+  width: 19px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -35px;
+  margin-left: 56px;
+  border-radius: 11px;
+  font-size: 14px;
+  background: red;
+  color: white;
+}

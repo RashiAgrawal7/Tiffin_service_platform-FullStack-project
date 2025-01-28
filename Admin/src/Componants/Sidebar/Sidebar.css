@@ -1,0 +1,35 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 30px;
+    width: 100%;
+    max-width: 250px;
+    height: 100vh;
+    border-right: 2px solid rgb(23, 17, 17);
+}
+
+.sidebar-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #1a1515;
+    gap: 20px;
+}
+
+.add-product-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.list-product-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.sidebar-item p{
+    color: white;
+}

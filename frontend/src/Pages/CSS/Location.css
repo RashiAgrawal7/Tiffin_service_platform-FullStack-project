@@ -1,0 +1,15 @@
+.location-page{
+    display: block;
+    margin: 20px 60px;
+}
+
+.home-link{
+    text-decoration: none;
+}
+
+.locationFilter{
+    margin: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
