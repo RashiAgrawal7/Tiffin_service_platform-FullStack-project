@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './ListProduct.css'
 import removeIcon from '../../assets/cross-icon.png'
+import {toast} from 'react-toastify';
 
 const ListProduct = ({url}) => {
     const [allProduct,setallProducts] = useState([])
@@ -8,7 +9,14 @@ const ListProduct = ({url}) => {
     const fetchInfo = async () =>{
         await fetch(`${url}/products/allproducts`)
         .then((res)=>res.json())
-        .then((data)=>setallProducts(data));
+        .then((data)=>{
+            if(data.success){
+                setallProducts(data.data);
+            }
+            else{
+                toast.error("Error");
+            }
+        });
     }
     useEffect(()=>{fetchInfo()},[]);
 
@@ -39,7 +47,7 @@ const ListProduct = ({url}) => {
             <hr />
             {allProduct.map((product,index)=>{
                 return <> <div key={index} className="listproduct-format-main listproduct-format">
-                    <img src={product.image} alt="" className="listproduct-product-icon" />
+                    <img src={`${url}/images/`+product.image} alt="" className="listproduct-product-icon" />
                     <p>{product.name}</p>
                     <p>Rs.{product.approx_price}</p>
                     <p>{product.location}</p>

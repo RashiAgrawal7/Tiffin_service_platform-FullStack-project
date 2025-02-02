@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddProduct.css";
 import uploadArea from "../../assets/uplaod-area-image.png";
+import { toast } from "react-toastify";
 
 const AddProduct = ({url}) => {
   const [Image, setImage] = useState(false);
@@ -10,8 +11,7 @@ const AddProduct = ({url}) => {
     location: "Indore",
     delivery_time: "",
     cuisine: "",
-    phone_number: "",
-    image: "",
+    phone_number: ""
   });
 
   const ImageHandler = (e) => {
@@ -19,47 +19,84 @@ const AddProduct = ({url}) => {
   };
 
   const ChangeHandler = (e) => {
-    setProductDetails({ ...ProductDetails, [e.target.name]: e.target.value });
+    setProductDetails(ProductDetails=>({ ...ProductDetails, [e.target.name]: e.target.value }));
   };
 
-  const AddProduct = async () => {
-    let ResponseData;
-    let product = ProductDetails;
-
-    let formData = new FormData();
-    formData.append("product", Image);
-
-    await fetch(`${url}/upload`, {
+  const onSubmitHandler = async (event) =>{
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("name",ProductDetails.name);
+    formData.append("approx_price",Number(ProductDetails.approx_price));
+    formData.append("location",ProductDetails.location);
+    formData.append("delivery_time",ProductDetails.delivery_time);
+    formData.append("cuisine",ProductDetails.cuisine);
+    formData.append("phone_number",ProductDetails.phone_number);
+    formData.append("image",Image);
+    await fetch(`${url}/products/addproduct`, {
       method: "POST",
-      headers: {
-        accept: "application/json",
-      },
       body: formData,
     })
       .then((resp) => resp.json())
       .then((data) => {
-        ResponseData = data;
-      });
+        if(data.success){
+          setProductDetails({
+            name: "",
+            approx_price: "",
+            location: "Indore",
+            delivery_time: "",
+            cuisine: "",
+            phone_number: ""
+          })
+          setImage(false);
+          toast.success(data.message);
+        }
+        else{
 
-    if (ResponseData.success) {
-      product.image = ResponseData.image_url;
-      console.log(product);
-      await fetch(`${url}/products/addproduct`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product),
-      })
-        .then((resp) => resp.json())
-        .then((data) => {
-          data.success ? alert("Product Added") : alert("Failed");
-        });
-    }
-  };
+        }
+
+        // data.success ? alert("Product Added") : alert("Failed");
+      });
+  }
+
+  // const AddProduct = async () => {
+  //   let ResponseData;
+  //   let product = ProductDetails;
+
+  //   let formData = new FormData();
+  //   formData.append("product", Image);
+
+  //   await fetch(`${url}/upload`, {
+  //     method: "POST",
+  //     headers: {
+  //       accept: "application/json",
+  //     },
+  //     body: formData,
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       ResponseData = data;
+  //     });
+
+  //   if (ResponseData.success) {
+  //     product.image = ResponseData.image_url;
+  //     console.log(product);
+  //     await fetch(`${url}/products/addproduct`, {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(product),
+  //     })
+  //       .then((resp) => resp.json())
+  //       .then((data) => {
+  //         data.success ? alert("Product Added") : alert("Failed");
+  //       });
+  //   }
+  // };
   return (
     <div className="add-product">
+      <form className="form-tag" onSubmit={onSubmitHandler}>
       <div className="add-product-item-field">
         <p>Tiffin Service Title</p>
         <input
@@ -126,12 +163,13 @@ const AddProduct = ({url}) => {
       </div>
       <div className="add-product-item-field">
         <p>Upload Image</p>
-        <label htmlFor="file-input">
+        <label htmlFor="image">
           <img src={Image ? URL.createObjectURL(Image) : uploadArea} className="upload-area-thumbnail-img" alt=""/>
         </label>
-        <input onChange={ImageHandler} type="file" name="image" id="file-input" hidden/>
+        <input onChange={ImageHandler} type="file" name="image" id="image" hidden required/>
       </div>
-      <button onClick={() => {AddProduct();}}className="add-product-btn">ADD</button>
+      <button type="submit" className="add-product-btn">ADD</button>
+      </form>
     </div>
   );
 };

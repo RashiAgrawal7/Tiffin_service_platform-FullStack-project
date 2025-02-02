@@ -40,8 +40,10 @@ const productSchema = mongoose.Schema({
     available:{
         type: Boolean,
         default:true,
+    },
+    phone_number: {
+        type: String
     }
-
 })
 
 module.exports = mongoose.model("product",productSchema);

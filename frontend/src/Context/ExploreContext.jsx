@@ -39,7 +39,7 @@ const ExploreContextProvider = (props) => {
     useEffect(() => {
          fetch(`${url}/products/allproducts`)
         .then((response)=>response.json())
-        .then((data)=>setAll_products(data));
+        .then((data)=>setAll_products(data.data));
 
         fetchUsersCart();
     }, [])

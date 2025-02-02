@@ -30,6 +30,7 @@ const { log } = require('console');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
+app.use('/images',express.static('uploads/images'));
 
 app.use("/products",productRouter);
 app.use("/users",userRouter);
@@ -44,25 +45,25 @@ app.get("/",(req,res)=>{
 
 // Image storage engine
 
-const storage = multer.diskStorage({
-    destination: '/upload/images',
-    filename: (req,file,cb)=>{
-        cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: '/upload/images',
+//     filename: (req,file,cb)=>{
+//         cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+//     }
+// })
 
-const upload = multer({storage:storage});
+// const upload = multer({storage:storage});
 
 // Creating upload endpoint for images
 
-app.use('/images',express.static('/upload/images'));
 
-app.post('/upload',upload.single('product'),(req,res)=>{
-    res.json({
-        success:1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
-    })
-})
+
+// app.post('/upload',upload.single('product'),(req,res)=>{
+//     res.json({
+//         success:1,
+//         image_url: `http://localhost:${port}/images/${req.file.filename}`
+//     })
+// })
 
 // app.post("/addproduct", async (req,res)=>{
 //     // {id ,name ,location ,image ,delivery_time ,approx_price , cuisine} = req.body;

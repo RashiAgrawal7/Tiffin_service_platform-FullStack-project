@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import './ExploreCard.css'
 import { Link } from "react-router-dom";
+import { ExploreContext } from "../../Context/ExploreContext";
 
 export default function ExploreCard(props) {
+    const {url} = useContext(ExploreContext);
     return (
 
         <div className="explore-card cur-po">
                 <div className="explore-card-cover">
-                    <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.image} alt="" className="explore-card-image" /></Link>
+                    <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={url+"/images/"+props.image} alt="" className="explore-card-image" /></Link>
                     <div className="delivery-time">{props.delivery_time}</div>
                 </div>
                 <div className="res-row">

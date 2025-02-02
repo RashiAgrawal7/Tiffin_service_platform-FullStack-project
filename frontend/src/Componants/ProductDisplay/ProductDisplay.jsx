@@ -5,18 +5,18 @@ import { ExploreContext } from "../../Context/ExploreContext";
 
 export default function ProductDisplay(props) {
   const { product } = props;
-  const {AddToCart} = useContext(ExploreContext);
+  const {AddToCart,url} = useContext(ExploreContext);
   return (
     <div className="product-display">
       <div className="product-display-left">
         <div className="product-display-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img src={url+"/images/"+product.image} alt="" />
+          <img src={url+"/images/"+product.image} alt="" />
+          <img src={url+"/images/"+product.image} alt="" />
           {/* <img src={product.image} alt="" /> */}
         </div>
         <div className="product-display-main-img">
-          <img src={product.image} alt="" />
+          <img src={url+"/images/"+product.image} alt="" />
         </div>
       </div>
       <div className="product-display-right">
