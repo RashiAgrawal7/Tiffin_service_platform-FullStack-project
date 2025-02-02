@@ -5,7 +5,7 @@ import cross_icon from '../Assets/cross-icon.png'
 import {Link} from 'react-router-dom';
 
 export default function CartItems(){
-    const {GetCartItemTotalAmount,All_products,cartItems,RemoveFromCart} = useContext(ExploreContext);
+    const {GetCartItemTotalAmount,All_products,cartItems,RemoveFromCart,url} = useContext(ExploreContext);
     return(
         <div className="cart-items">
             <div className="cart-items-format-main">
@@ -21,7 +21,7 @@ export default function CartItems(){
                 if(cartItems[e.id] > 0){
                  return <div> 
                            <div className="cart-items-format cart-items-format-main">
-                             <img src={e.image} alt="" className="carticon-product-icon" />
+                             <img src={url+"/images/"+e.image} alt="" className="carticon-product-icon" />
                              <p>{e.name}</p>
                              <p>Rs.{e.approx_price}</p>
                              <button className="cartitem-quantity">{cartItems[e.id]}</button>
