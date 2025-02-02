@@ -15,7 +15,7 @@ const getDefaultCart = () => {
 
 const ExploreContextProvider = (props) => {
 
-    const url = 'http://localhost:4000';
+    const url = 'https://tiffintown-backend.onrender.com';
 
     const [All_products,setAll_products] = useState([]);
 
