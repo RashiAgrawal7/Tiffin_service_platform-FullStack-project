@@ -7,7 +7,7 @@ import ListProduct from "../../Componants/ListProduct/ListProduct";
 import ListOrders from "../../Componants/ListOrders/ListOrders";
 
 export default function Admin(){
-    const url = "http://localhost:4000"
+    const url = "https://tiffintown-backend.onrender.com"
     return(
         <div className="admin">
             <Sidebar/>
